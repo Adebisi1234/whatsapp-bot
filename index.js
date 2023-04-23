@@ -34,6 +34,7 @@ mongoose
       console.log("Client is ready!");
     });
     client.on("message", async (msg) => {
+      console.log(mes.body);
       if (msg.body === "!ping") {
         // Send a new message as a reply to the current one
         msg.reply(
