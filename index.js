@@ -152,3 +152,5 @@ mongoose
 
     client.initialize();
   });
+
+console.log("fuck this");
