@@ -19,6 +19,19 @@ mongoose
     console.log("connected");
     const store = new MongoStore({ mongoose: mongoose });
     const client = new Client({
+      restartOnAuthFail: true,
+      puppeteer: {
+        headless: true,
+        args: [
+          "--no-sandbox",
+          "--disable-setuid-sandbox",
+          "--disable-dev-shm-usage",
+          "--disable-accelerated-2d-canvas",
+          "--no-first-run",
+          "--no-zygote",
+          "--disable-gpu",
+        ],
+      },
       authStrategy: new RemoteAuth({
         store: store,
         backupSyncIntervalMs: 300000,
@@ -34,7 +47,7 @@ mongoose
       console.log("Client is ready!");
     });
     client.on("message", async (msg) => {
-      console.log(mes.body);
+      console.log(msg.body);
       if (msg.body === "!ping") {
         // Send a new message as a reply to the current one
         msg.reply(
