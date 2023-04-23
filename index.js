@@ -1,4 +1,6 @@
 const qrcode = require("qrcode-terminal");
+const express = require("express");
+const app = express();
 require("dotenv").config();
 
 const { Client, RemoteAuth } = require("whatsapp-web.js");
@@ -154,3 +156,6 @@ mongoose
   });
 
 console.log("fuck this");
+app.listen(3000, () => {
+  console.log("listening on port 3000");
+});
