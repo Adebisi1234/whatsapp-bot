@@ -85,12 +85,32 @@ const chat = await client.getChats()
             chat.name.includes(name)
           );
           if (chat) {
-console.log(chat)
+console.log(chat.id._serialized)
             await client.sendMessage(chat.id._serialized, message);
             msg.reply("done");
           }
 
-      }else {
+      }else if (msg.body === '!leave') {
+        // Leave the group
+        let chat = await msg.getChat();
+        if (chat.isGroup) {
+            client.reply("goodbye")
+            chat.leave();
+        } else {
+            msg.reply('This command can only be used in a group!');
+        }
+    }else if (msg.body === '!groupinfo') {
+        let chat = await msg.getChat();
+        if (chat.isGroup) {
+            msg.reply(`
+                *Group Details*
+                Name: ${chat.name}
+                Description: ${chat.description}
+                Created At: ${chat.createdAt.toString()}
+                Created By: ${chat.owner.user}
+                Participant count: ${chat.participants.length}
+            `);
+        } else {
         console.log(msg.body)
         }
     });
