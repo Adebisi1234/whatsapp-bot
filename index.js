@@ -88,10 +88,6 @@ mongoose
           client.sendMessage(number, message);
           msg.reply("done");
         }
-      } else {
-        msg.reply(
-          "Hi, I'm bottiest created by tobedated of csc \n contact: hi.tobedated@gmail.com he's a developer and open to gigs, send a email if you have a job offer. Send !ping to me to checkout my features"
-        );
       }
     });
 
