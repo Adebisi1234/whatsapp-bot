@@ -94,7 +94,7 @@ console.log(chat.id._serialized)
         // Leave the group
         let chat = await msg.getChat();
         if (chat.isGroup) {
-            client.reply("goodbye")
+            msg.reply("goodbye")
             chat.leave();
         } else {
             msg.reply('This command can only be used in a group!');
