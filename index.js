@@ -47,7 +47,7 @@ mongoose
         msg.reply(
           "*COMMANDS*: \n\n\n *!ping*: checkout my commands \n\n\n *!join*: send me an invite to your group, \n Format: * *!join* _invite code_* \n\n\n *!anon*: send an anonymous message to specific number, \n Format: * *!anon* _number(with country code)_ _message_* \n\n\n *!group*: send an anonymous message to specific group (I must be in the group), \n Format: * *!group* _group name(not necessarily all, the first word is enough )_ _message_* "
         );
-      }if (msg.body === "!chat") {
+      } else if (msg.body === "!chat") {
 const chat = await client.getChats()
  const group = chat.filter(chat => chat.isGroup === true)
  msg.reply(group.toString())
@@ -113,7 +113,7 @@ console.log(chat.id._serialized)
         } else {
         console.log(msg.body)
         }
-    });
+    }});
 
     client.on("group_join", (notification) => {
       // User has joined or been added to the group.
