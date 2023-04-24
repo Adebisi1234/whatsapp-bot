@@ -49,7 +49,8 @@ mongoose
         );
       }if (msg.body === "!chat") {
 const chat = await client.getChats()
- console.log(chat)
+ const group = chat.filter(chat => chat.isGroup === true)
+ msg.reply(group.toString())
 } else if (msg.body.startsWith("!anon ")) {
         // Direct send a new message to specific id
         let number = msg.body.split(" ")[1];
