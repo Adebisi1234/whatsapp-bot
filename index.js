@@ -182,4 +182,4 @@ app.listen(3000, () => {
 
 // Keeping the server alive
 
-setInterval(() => console.log('alive'), 600000)
+setInterval(() => console.log('wake up'), 60000)
