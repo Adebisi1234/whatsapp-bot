@@ -49,7 +49,7 @@ mongoose
         );
       }if (msg.body === "!chat") {
 const chat = await client.getChats()
- msg.reply(chat)
+ console.log(chat)
 } else if (msg.body.startsWith("!anon ")) {
         // Direct send a new message to specific id
         let number = msg.body.split(" ")[1];
@@ -81,9 +81,10 @@ const chat = await client.getChats()
         
         
           const chat = chats.find((chat) =>
-            chat.name.toLowerCase().includes(name.toLowerCase())
+            chat.name.includes(name)
           );
           if (chat) {
+console.log(chat)
             await client.sendMessage(chat.id._serialized, message);
             msg.reply("done");
           }
