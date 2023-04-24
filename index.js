@@ -75,19 +75,16 @@ mongoose
         let message = msg.body.slice(messageIndex, msg.body.length);
         const chats = await client.getChats();
         message += ` \n\n ${mes}`;
-        if (!Number(name)) {
+        
+        
           const chat = chats.find((chat) =>
             chat.name.toLowerCase().includes(name.toLowerCase())
           );
           if (chat) {
-            client.sendMessage(chat.id._serialized, message);
+            await client.sendMessage(chat.id._serialized, message);
             msg.reply("done");
           }
-        } else if (Number(name)) {
-          const number = name.includes("@c.us") ? name : `${name}@c.us`;
-          client.sendMessage(number, message);
-          msg.reply("done");
-        }
+
       }else {
         console.log(msg.body)
         }
