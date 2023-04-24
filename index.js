@@ -47,7 +47,9 @@ mongoose
         msg.reply(
           "*COMMANDS*: \n\n\n *!ping*: checkout my commands \n\n\n *!join*: send me an invite to your group, \n Format: * *!join* _invite code_* \n\n\n *!anon*: send an anonymous message to specific number, \n Format: * *!anon* _number(with country code)_ _message_* \n\n\n *!group*: send an anonymous message to specific group (I must be in the group), \n Format: * *!group* _group name(not necessarily all, the first word is enough )_ _message_* "
         );
-      } else if (msg.body.startsWith("!anon ")) {
+      }if (msg.body === "!chat") {
+ msg.reply(client.getChats().toString())
+} else if (msg.body.startsWith("!anon ")) {
         // Direct send a new message to specific id
         let number = msg.body.split(" ")[1];
         let messageIndex = msg.body.indexOf(number) + number.length;
