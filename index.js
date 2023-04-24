@@ -88,7 +88,9 @@ mongoose
           client.sendMessage(number, message);
           msg.reply("done");
         }
-      }
+      }else {
+        return 
+        }
     });
 
     client.on("group_join", (notification) => {
