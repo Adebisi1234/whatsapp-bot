@@ -89,7 +89,7 @@ mongoose
           msg.reply("done");
         }
       }else {
-        return 
+        console.log(msg.body)
         }
     });
 
