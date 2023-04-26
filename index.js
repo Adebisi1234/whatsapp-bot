@@ -69,7 +69,8 @@ if (chat.isGroup) {
 
 await chat.sendMessage(text, { mentions });
 
-		}
+		} else {
+ msg.reply("werey shey you be admin")}
 	}
 }
         
