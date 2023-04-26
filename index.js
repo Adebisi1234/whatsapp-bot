@@ -51,7 +51,31 @@ mongoose
 const chat = await client.getChats()
  const group = chat.filter(chat => chat.isGroup === true)
  msg.reply(group.toString())
-} else if (msg.body.startsWith("!anon ")) {
+} else if(msg.body === '!everyone') {
+        const chat = await msg.getChat();
+if (chat.isGroup) {
+        const authorId = message.author;
+	for(let participant of chat.participants) {
+		if(participant.id._serialized === authorId && participant.isAdmin) {
+                        let text = "Yoh mfs";
+        let mentions = [];
+
+        for(let participant of chat.participants) {
+            const contact = await client.getContactById(participant.id._serialized);
+            
+            mentions.push(contact);
+           
+        }
+
+await chat.sendMessage(text, { mentions });
+
+		}
+	}
+}
+        
+        
+        
+    } else if (msg.body.startsWith("!anon ")) {
         // Direct send a new message to specific id
         let number = msg.body.split(" ")[1];
         let messageIndex = msg.body.indexOf(number) + number.length;
