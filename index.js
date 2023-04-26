@@ -53,14 +53,13 @@ const chat = await client.getChats()
  msg.reply(group.toString())
 } else if(msg.body === '!everyone') {
         const chat = await msg.getChat();
-if (chat.isGroup) {
-        const authorId = msg.author;
-	for(let participant of chat.participants) {
-		if(participant.id._serialized === authorId && participant.isAdmin) {
-                        let text = "Yoh mfs";
-        let mentions = [];
-
-        for(let participant of chat.participants) {
+        if (chat.isGroup) {
+           const authorId = msg.author;
+           let text = "Yoh mfs";
+          let mentions = [];
+         const isAdmin = chat.participants.find(and => and.id._serialized === authorId && and.isAdmin)
+    if(isAdmin){
+for(let participant of chat.participants) {
             const contact = await client.getContactById(participant.id._serialized);
             
             mentions.push(contact);
@@ -68,14 +67,9 @@ if (chat.isGroup) {
         }
 
 await chat.sendMessage(text, { mentions });
-
-		} else {
+	}else {
  msg.reply("werey shey you be admin")}
 	}
-}
-        
-        
-        
     } else if (msg.body.startsWith("!anon ")) {
         // Direct send a new message to specific id
         let number = msg.body.split(" ")[1];
