@@ -54,7 +54,7 @@ const chat = await client.getChats()
 } else if(msg.body === '!everyone') {
         const chat = await msg.getChat();
 if (chat.isGroup) {
-        const authorId = message.author;
+        const authorId = msg.author;
 	for(let participant of chat.participants) {
 		if(participant.id._serialized === authorId && participant.isAdmin) {
                         let text = "Yoh mfs";
